@@ -1,0 +1,17 @@
+<!-- <div class="card"> -->
+<div>
+  <span *ngFor="let key of objectKeys(form_data)">
+    <span *ngIf="checkType(form_data[key]) === 'object'">
+      <span *ngFor="let subkey of objectKeys(form_data[key])">
+        <p>{{subkey}}: {{form_data[key][subkey]}}</p>
+      </span>
+    </span>
+    <span *ngIf="checkType(form_data[key]) != 'object'">
+      <p>{{key}}: {{form_data[key]}}</p>
+    </span>
+  </span>
+  <button class="btn btn-success float-left" (click)="save(true)">save</button>
+  <button class="btn btn-default float-right" (click)="save(false)">cancel</button>
+</div>
+<!-- </div> -->
+

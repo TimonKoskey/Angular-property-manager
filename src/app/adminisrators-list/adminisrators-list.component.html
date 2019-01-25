@@ -1,0 +1,31 @@
+<div class="row" id="admins-list">
+  <div class="col-md-6">
+      <div class="card card-plain">
+          <div class="card-header">
+              <h4 class="title text-center">Administrators</h4>
+              <!-- <p class="category">Here is a subtitle for this table</p> -->
+          </div>
+          <div class="card-content table-responsive">
+            <table class="table table-hover">
+            <tbody>
+            <tr *ngFor="let admin of admins_list">
+            <td>
+                <!-- {{admin.User_details.username}}
+                    {{admin.User_details.username}}
+                {{admin.User_details.Avatar[0].avatar}} -->
+                <!-- <img class="card-img" [src]="'http://127.0.0.1:8000'+admin.User_details.Avatar[0].avatar"/> -->
+            </td>
+            <a href="javascript:void(0)" (click)="navToAdminDetails(admin)">
+                <td>
+                    <p>{{admin.User_details.first_name}} {{admin.User_details.last_name}}</p>
+                </td>
+            </a>
+            </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-6">  
+    <app-register-admin (add_admin)="onAddAdmin($event)"></app-register-admin>
+  </div>
+</div>

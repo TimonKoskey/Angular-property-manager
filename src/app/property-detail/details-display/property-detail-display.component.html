@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+        <div class="card-header card-header-info card-header-icon">
+            <div class="card-icon">
+            <i class="material-icons">home</i>
+            </div>
+            <p class="card-category">Total Units</p>
+            <h3 class="card-title">15
+            <!-- <small>GB</small> -->
+            </h3>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+            <!-- <i class="material-icons text-warning">warning</i>
+            <a href="#pablo" class="warning-link">Get More Space...</a> -->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+        <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+            <i class="material-icons">home</i>
+            </div>
+            <p class="card-category">Occupied </p>
+            <h3 class="card-title">9</h3>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+            <!-- <i class="material-icons">date_range</i> Last 24 Hours -->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+        <div class="card card-stats">
+        <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+            <i class="material-icons">home</i>
+            </div>
+            <p class="card-category">Unoccupied</p>
+            <h3 class="card-title">8</h3>
+        </div>
+        <div class="card-footer">
+            <div class="stats">
+            <!-- <i class="material-icons">local_offer</i> Tracked from Github -->
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="card property-info">
+
+            <div class="row card-content">
+        
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <p class="category"><span> Property Name: </span>
+                    {{property_details.property_name}}</p>
+                <p class="category"><span> Property Type: </span>
+                    {{property_details.property_type}}</p>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <p class="category"><span> Location: </span> 
+                    {{property_details.Location.Area_name}}</p>
+                <p class="category"><span> Administrator: </span>
+                    <a routerLink="/account/admin/details">{{property_details.Administrator.username}}</a></p>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
+                <p class="category"><span> Care Taker: </span> 
+                    <a href="#">Ali Ahmed</a></p>
+                <p class="category"><span> Security Person: </span> 
+                    <a href="#">Daniel Kemboi</a></p>
+                <button class="btn btn-primary float-right" (click)="editProperty()">edit property details</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="row" *ngFor="let unit of units_list">
+            <table class="table table-hover" style="width:100%">
+                <thead>
+                    <h4>{{unit.unit_ID}}</h4>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td >
+                            <p>unit size: {{unit.unit_size}}</p>
+                            <p>number of rooms: {{unit.number_of_rooms}}</p>
+                            <p>purpose: {{unit.unit_purpose}}</p>
+                            <p>current status:</p>
+                            
+                        </td>
+                        <td >
+                            <span *ngIf="unit.tenant_details != null">
+                                <p>client name: {{unit.tenant_details.user.first_name}} 
+                                    {{unit.tenant_details.user.last_name}}
+                                </p>
+                                <p>occupation: {{unit.tenant_details.occupation}}</p>
+                                <p>phone number: {{unit.tenant_details.phone_number}}</p>
+                                <p>email: {{unit.tenant_details.user.email}}</p>
+                            </span>
+                        </td>
+                        <td >
+                            <span *ngIf="unit.tenant_details != null">
+                                <p>expected_amount: {{unit.tenant_current_month_payment_status.expected_amount}}</p>
+                                <p>current month: </p>
+                                <p>amount paid: {{unit.tenant_current_month_payment_status.amount_paid}}</p>
+                                <p>balance: {{unit.tenant_current_month_payment_status.balance}}</p>
+                                <button class="btn btn-info float-right" (click)="viewUnitDetails(unit)">VIEW DETAILS</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn btn-danger float-left" (click)="deleteProperty()">DELETE PROPERTY</button>
+    </div>
+</div>
+               

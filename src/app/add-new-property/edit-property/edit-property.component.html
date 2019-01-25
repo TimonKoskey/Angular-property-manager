@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <!-- <p>
+      Form Status: {{ addPropertyForm.status }}
+       (ngSubmit)="addPropertyParams(addPropertyForm.value)"
+    </p> -->
+<div *ngIf = 'display_results === false; else dbresults'>
+  <form [formGroup]="editPropertyForm" #FormDir='ngForm'>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="Property_name">Property Name:</label>
+        <input type="text" class="form-control" id="Property_name" formControlName="Property_name">
+      </div>
+      <div class="col-md-4">
+        <label for="Property_type">Property Type:</label>
+        <input type="text" class="form-control" id="Property_type" formControlName="Property_type">
+      </div>
+      <!-- <div class="col-md-4">
+        <label for="Location">Location:</label>
+        <input type="text" class="form-control" id="Location" formControlName="Location">
+      </div> -->
+      <div class="col-md-4">
+        <label for="Number_of_units">Number of units:</label>
+        <input type="text" class="form-control" id="Number_of_units" formControlName="Number_of_units">
+      </div>
+      <div class="col-md-4">
+        <label for="Availlable_units">Availlable units:</label>
+        <input type="text" class="form-control" id="Availlable_units" formControlName="Availlable_units">
+      </div>
+      <div class="col-md-4">
+        <label for="Occupied_units">Occupied units:</label>
+        <input type="text" class="form-control" id="Occupied_units" formControlName="Occupied_units">
+      </div>
+      <!-- <div class="col-md-4">
+        <label for="Property_overview_photo">Property overview photo:</label>
+        <input type="text" class="form-control" id="Property_overview_photo" formControlName="Property_overview_photo">
+      </div>
+      <div class="col-md-4">
+        <label for="Administrator">Administrator:</label>
+        <input type="text" class="form-control" id="Administrator" fromControlName="Administrator">
+      </div> -->
+    </div>
+    <button id="search" class="btn btn-info" (click)="saveChanges(FormDir,editPropertyForm.value)"> SAVE </button>
+  </form>
+</div>
+<ng-template #dbresults>
+  <h4><u>updated details</u></h4>
+  <p>Property_name : <span>{{ results.property_name }}</span></p>
+  <p>Property_type : <span>{{ results.property_type }}</span></p>
+  <p>Aumber_of_units : <span>{{ results.number_of_units }}</span></p>
+  <p>Availlable_units : <span>{{ results.availlable_units }}</span></p>
+  <p>Occupied_units : <span>{{ results.occupied_units }}</span></p>
+</ng-template>
+
+<div *ngIf = "can_add_propertyUnits">
+  <app-add-new-unit> </app-add-new-unit>
+</div>
+
+<button id="exit" class="btn btn-primary float-right"(click)="exit()">EXIT EDITOR</button>
+</div>

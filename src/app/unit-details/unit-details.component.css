@@ -1,0 +1,39 @@
+/* .unit-image {
+    width: 250px;
+    height: 250px;
+} */
+
+.card-img {
+    width: 100%;
+}
+
+.card .card-content {
+    color: #ffffff;
+    padding-left: 20px;
+}
+
+.card .card-header h3,h4 {
+    color: rgb(250, 255, 189);
+}
+
+.card .card-header p {
+    color: rgb(250, 255, 189);
+}
+
+.card {
+    margin-top: 0px;
+}
+
+.card .card-content p span {
+    color: #288c6c;
+}
+
+.card .card-content form input.form-control {
+    /* width: 30%; */
+    border: 1px solid #d2d2d2;
+    padding-left: 20px;
+}
+
+.card .card-content form input#file {
+    margin: 20px 20px 20px 30px;
+}

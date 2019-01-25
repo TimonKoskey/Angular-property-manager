@@ -1,0 +1,12 @@
+img {
+    width: 80px;
+    height: 80px;
+}
+
+.text-blue {
+    color: #007bff;
+}
+
+#admins-list {
+    margin-top: 10px;
+}

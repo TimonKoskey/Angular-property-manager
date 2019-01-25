@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+  <div class="col-xl-6 col-lg-6" *ngFor="let property of property_list">
+      <div class="card card-chart">
+      <div class="card-header">
+          <img class="card-img" [src]="property.property_overview_photo"/>
+      </div>
+      <div class="card-body">
+          <h4 class="card-title">{{ property.property_name }}</h4>
+          <p class="card-category">
+          <span class="text-success"><i class="fa fa-map-marker"></i> Location: </span> 
+          {{ property.location.area_or_estate_name }}</p>
+          <p class="card-category">
+              <span class="text-success"><i class="fa fa-address-book"></i> Administrator:  </span>
+              <span  *ngIf = "property.administrator != null; else notAssigned">
+                  <a routerLink="/account/admin/details">{{ property.administrator.user.username }}</a>
+              </span>
+              <ng-template #notAssigned>
+                  not assigned
+              </ng-template>
+          </p>
+          <button class="btn btn-default float-right" (click)="navigateToDetails(property.id)">
+                  view details
+          </button>
+      </div>
+      <div class="card-footer">
+          <div class="stats">
+          <i class="material-icons">access_time</i> updated 4 minutes ago
+          </div>
+      </div>
+      </div>
+  </div>
+
+  </div>
+</div>

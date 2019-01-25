@@ -1,0 +1,59 @@
+<div class="row unit-form">
+  <div *ngIf = "display_form">
+    <h3 class="text-center">Fill in the details of each unit in the above property</h3> 
+    <div class="card">
+      <form [formGroup]="add_unit_form" #FormDir='ngForm'>
+        <div class="row">
+          <div class="col-md-3">
+            <label for="Unit_id">Unit id</label>
+            <input type="text" class="form-control" id="Unit_id" formControlName="Unit_ID">
+          </div>
+          <div class="col-md-3">
+            <label for="Unit_size">Unit value</label>
+            <input type="text" class="form-control" id="Unit_value" formControlName="Unit_value">
+          </div>
+          <div class="col-md-3">
+            <label for="Unit_size">Unit size</label>
+            <input type="text" class="form-control" id="Unit_size" formControlName="Unit_size">
+          </div>
+          <div class="col-md-3">
+            <label for="Number_of_rooms">Number of rooms</label>
+            <input type="text" class="form-control" id="Number_of_rooms" formControlName="Number_of_rooms">
+          </div>
+          <div class="col-md-3">
+            <label for="Is_occupied">Is occupied</label>
+            <!-- <input type="checkbox" class="form-control" id="Is_occupied"> 
+            (ngSubmit)="addUnitParams(add_unit_form.value)"-->
+            <label class="container">
+              <input type="checkbox" formControlName="Is_occupied">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <!-- <button id="search" type="submit" class="btn btn-primary btn-search"> Submit</button> -->
+        <button type="submit" class="btn btn-default" (click)="saveAndAdd(FormDir,add_unit_form.value)">
+          <small>save and add another</small>
+        </button>
+        <button type="submit" class="btn btn-info" id="saveAndFinish" (click)="saveAndFinish(add_unit_form.value)">
+          <small>save and finish</small> 
+        </button>
+        <!-- <button type="submit" class="btn btn-primary" id="exit" (click)="exit(FormDir)">
+          <small>exit</small> 
+        </button> -->
+      </form>
+    </div>
+  </div>
+  <div class="card" *ngIf = "added_units.length != 0">
+    <div class="card-header">
+      <h4><u>Added units</u></h4>
+    </div>
+    <div class="card-content" *ngFor = "let unit of added_units">
+      <p>Unit id: <span>{{unit.unit_ID}}</span>  Size: <span>{{unit.unit_size}}</span></p>
+      <!-- 'propertyDetail': this.property_details,
+      'unit_ID' : params.Unit_ID,
+      'unit_size' : params.Unit_size,
+      'number_of_rooms' : params.Number_of_rooms,
+      'unit_value' : params.Unit_value -->
+    </div>
+  </div>
+</div>

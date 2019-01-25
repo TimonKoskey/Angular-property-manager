@@ -1,0 +1,8 @@
+.card-header {
+    padding: 1px 1px;
+    background-color: #17a2b8;
+}
+
+.card.card-plain {
+    background-color: #eee;  
+}

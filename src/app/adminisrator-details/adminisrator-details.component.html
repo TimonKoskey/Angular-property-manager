@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xs-offset-0 col-sm-offset-0  toppad" >
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 ">
+                <img class="card-img" src="https://www.askideas.com/media/15/12-Week-Cute-German-Shepherd-Puppy.jpg" 
+                  alt="User Pic" class="img-circle img-responsive">
+              </div>
+              
+              <div class=" col-md-9 col-lg-9 "> 
+                <table class="table table-user-information">
+                  <tbody>
+                    <tr>
+                      <td>Name:</td>
+                      <td>{{admin_details.User_details.first_name}} {{admin_details.User_details.last_name}}</td>
+                    </tr>
+                    <tr>
+                      <td>Department:</td>
+                      <td>Super Administrator</td>
+                    </tr>
+                    <tr>
+                      <td>Hire date:</td>
+                      <td>06/23/2013</td>
+                    </tr>
+                    <tr>
+                      <td>Date of Birth</td>
+                      <td>01/24/1988</td>
+                    </tr>
+                 
+                       <tr>
+                           <tr>
+                      <td>Gender</td>
+                      <td>Male</td>
+                    </tr>
+                      <tr>
+                      <td>Home Address</td>
+                      <td>Eldoret,Kenya</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td><a href="timonkosy92@gmail.com">timonkosy92@gmail.com</a></td>
+                    </tr>
+                    <tr>
+                      <td>Phone Number</td>
+                      <td>0724537207(Mobile)</td>    
+                    </tr>
+                   
+                  </tbody>
+                </table>
+                
+                <button class="btn btn-primary" (click)="assignProperty()">
+                  Assign Property</button>
+                <!-- <button class="btn btn-primary">Team Sales Performance</button> -->
+                <button class="btn btn-danger float-right" (click)="deleteAdminAccount()">DELETE ACCOUNT</button>
+              </div>
+            </div>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+.landing-page {
+    height: 98vh;
+    max-height: 1050px;
+    padding: 0;
+    position: relative;
+    color: #8b92a9;
+    background-color: #1f283e;
+}
+
+.landing-page .sign-up {
+    height: 98vh;
+    max-height: 1050px;
+    background-color: #3C4858;
+    z-index: 1;
+}
+
+.landing-page .landing-page-image {
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+/* .sign-up {
+    background-color: #FFF
+} */

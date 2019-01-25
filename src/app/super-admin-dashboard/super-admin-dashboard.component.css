@@ -1,0 +1,86 @@
+/* #profile-image {
+    object-fit: cover;
+    width:150px;
+    height:150px;
+  }
+
+ #sidebar-nav .nav-container .nav li {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+  }
+
+  #sidebar-nav .nav-container .nav li a {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:5px;
+    text-decoration: none;
+  }
+
+  #sidebar .nav-container .active {
+    background-color: #868e96;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #ddd;
+  }
+  
+
+
+p a{
+  color: #f2f2f2;
+}
+
+
+
+#logout-link {
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #17a2b8;
+  margin-bottom: 0px;
+  border: 0px;
+  color: #f2f2f2;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #f2dede;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff7f1;
+} */
+
+/* Style the links inside the navigation bar */
+/* .topnav h3 {
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-bottom: 0px;
+  cursor: pointer;
+} */
+
+/* #main-panel {
+  margin-top: 0px;
+}
+
+@media only screen and (min-width: 720px){
+    #sidebar {
+      padding-right: 0px;
+      height: 90vh;
+      max-height: 1050px;
+      position: relative;
+    }
+  }
+  
+
+#sidebar {
+    background-color: #eee;
+    margin-top: 0px
+  } */
+
+  /* #eee; */

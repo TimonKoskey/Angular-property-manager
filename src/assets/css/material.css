@@ -1,0 +1,22 @@
+.mat-dialog-container {
+	position: absolute;
+  	left: 50%;
+  	right: 50%;
+  	top: 10%;
+  	bottom: 10%;
+  	z-index: 10;
+  	background-color: white;
+  	width: 500px !important;
+  	height: 83vh !important;
+}
+
+@media only screen and (min-width: 900px) {
+
+	.mat-dialog-container {
+	  	left: 60%;
+	  	right: 60%;
+	  	top: 15%;
+	  	/*bottom: 25%;*/
+	}	
+
+}
