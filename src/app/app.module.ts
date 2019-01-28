@@ -42,6 +42,7 @@ import { EditPropertyComponent } from './add-new-property//edit-property/edit-pr
 import { SuperadminViewComponent } from './property-list/superadmin-view/superadmin-view.component';
 import { AdminViewComponent } from './property-list/admin-view/admin-view.component';
 import { ConfirmFormInputComponent } from './confirm-form-input/confirm-form-input.component';
+import { WarningPopupComponent } from './warning-popup/warning-popup.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ConfirmFormInputComponent } from './confirm-form-input/confirm-form-inp
     EditPropertyComponent,
     SuperadminViewComponent,
     AdminViewComponent,
-    ConfirmFormInputComponent
+    ConfirmFormInputComponent,
+    WarningPopupComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +86,7 @@ import { ConfirmFormInputComponent } from './confirm-form-input/confirm-form-inp
     ModalModule.forRoot()
   ],
 
-  entryComponents: [ PropertyListPopupComponent ],
+  entryComponents: [ PropertyListPopupComponent, WarningPopupComponent ],
 
   providers: [
     PropertyResourceService,

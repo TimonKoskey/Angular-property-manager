@@ -57,15 +57,17 @@
         
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                 <p class="category"><span> Property Name: </span>
-                    {{property_details.property_name}}</p>
+                    {{property_details['property_name']}}
+                </p>
                 <p class="category"><span> Property Type: </span>
-                    {{property_details.property_type}}</p>
+                    {{property_details['property_type']}}
+                </p>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
-                <p class="category"><span> Location: </span> 
-                    {{property_details.Location.Area_name}}</p>
+                <p class="category"><span> Location: </span></p>
                 <p class="category"><span> Administrator: </span>
-                    <a routerLink="/account/admin/details">{{property_details.Administrator.username}}</a></p>
+                    <!-- <a routerLink="/account/admin/details">{{property_details.Administrator.username}}</a> -->
+                </p>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6">
                 <p class="category"><span> Care Taker: </span> 

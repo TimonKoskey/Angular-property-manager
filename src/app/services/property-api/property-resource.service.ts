@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs/observable/of';
 import { Observable } from 'rxjs/Observable';
+import { PersistenceService, StorageType} from 'angular-persistence';
 import 'rxjs/add/operator/map';
 import { LoginServiceService} from '../login-service/login-service.service';
 
@@ -11,15 +12,29 @@ import { LoginServiceService} from '../login-service/login-service.service';
 export class PropertyResourceService {
   private baseUrl = 'http://127.0.0.1:8000/property/serializers/';
   private permission_status;
+  private _property_list;
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
     private loginservice: LoginServiceService,
+    private persistance: PersistenceService
     ) {
 
      }
+
+  getproperty_list () {
+    return this.persistance.get('property_list', StorageType.SESSION);
+  }
+
+  setproperty_list (propList) {
+    this.persistance.set('property_list', propList, {type: StorageType.SESSION});
+  }
+
+  deleteproperty () {
+    return this.persistance.remove('property_list', StorageType.SESSION);
+  }
 
   createHeaders(token?: string) {
     const data = {
@@ -120,6 +135,12 @@ export class PropertyResourceService {
     const token = this.loginservice.getToken();
     const httpOptions = this.createHeaders(token);
     return this.http.put(`${this.baseUrl}unit/details/edit/${unit_id}/`, params, httpOptions);
+  }
+
+  deleteUnitDetails (unit_id) {
+    const token = this.loginservice.getToken();
+    const httpOptions = this.createHeaders(token);
+    return this.http.delete(`${this.baseUrl}unit/details/delete/${unit_id}/`, httpOptions);
   }
 
   assignPropertiesToAdmin(properties) {

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators, NgForm , FormArray} fr
 import { BsModalRef } from 'ngx-bootstrap';
 import { PersistenceService, StorageType} from 'angular-persistence';
 import { PropertyResourceService } from '../services/property-api/property-resource.service';
+import { LoginServiceService } from '../services/login-service/login-service.service';
 
 @Component({
   selector: 'app-property-list-popup',
@@ -11,7 +12,7 @@ import { PropertyResourceService } from '../services/property-api/property-resou
 })
 export class PropertyListPopupComponent implements OnInit {
   adminisrator_id;
-  Properties ;
+  Properties;
   PropertyCheckForm: FormGroup;
   private selectedProperty = [];
 
@@ -22,18 +23,12 @@ export class PropertyListPopupComponent implements OnInit {
     private fb: FormBuilder,
     private persistenceservice: PersistenceService,
     private propertyservice: PropertyResourceService,
-  ) {
-
-    this.Properties =  this.persistenceservice.get('property_list', StorageType.SESSION);
-
-    const controls = this.Properties.map(c => new FormControl(false));
-    this.PropertyCheckForm = this.fb.group({
-      property_objs: this.fb.array(controls),
-    });
-   }
+    private singletonservive: LoginServiceService
+  ) {}
 
   ngOnInit() {
-
+    const controls = this.Properties.map(c => new FormControl(false));
+    this.PropertyCheckForm = this.fb.group({property_objs: this.fb.array(controls)});
   }
 
   isSelected(property) {
@@ -41,6 +36,7 @@ export class PropertyListPopupComponent implements OnInit {
   }
 
   handleSubmit(PropertyCheckForm) {
+    console.log(this.Properties);
 
     const selectedProperties = PropertyCheckForm.value.property_objs.map((v, i) =>
      v ? this.Properties[i] : null).filter(v => v !== null);

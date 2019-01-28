@@ -28,6 +28,7 @@ export class PropertyDetailDisplayComponent implements OnInit, OnDestroy {
 
     this.dbservice.fetchPropertyDetails(this.property_id).subscribe(results => {
       this.property_details = results;
+      console.log(this.property_details);
       this.peristenceservice.set('property_details', this.property_details,
       {type: StorageType.SESSION});
     });

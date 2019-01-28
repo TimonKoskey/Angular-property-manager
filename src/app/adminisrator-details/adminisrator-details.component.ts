@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PersistenceService, StorageType} from 'angular-persistence';
 import { LoginServiceService } from '../services/login-service/login-service.service';
+import { PropertyResourceService } from '../services/property-api/property-resource.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import { PropertyListPopupComponent } from '../property-list-popup/property-list-popup.component';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
@@ -21,7 +22,8 @@ export class AdminisratorDetailsComponent implements OnInit, OnDestroy {
     private loginservice: LoginServiceService,
     private route: Router,
     private router: ActivatedRoute,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private dbservice: PropertyResourceService
     ) {
     this.admin_details = this.persistence.get('admin', StorageType.SESSION);
   }
@@ -38,12 +40,13 @@ export class AdminisratorDetailsComponent implements OnInit, OnDestroy {
 
   assignProperty() {
     const initialState = {
-      adminisrator_id: this.admin_details['id']
+      adminisrator_id: this.admin_details['id'],
+      Properties: this.dbservice.getproperty_list()
     };
     this.modalRef = this.modalService.show(PropertyListPopupComponent, {initialState});
 
     this.modalRef.content.assignSuccessEvent.subscribe(data => {
-      console.log(data);
+      // console.log(data);
     });
   }
 

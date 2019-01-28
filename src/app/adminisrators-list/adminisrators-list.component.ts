@@ -38,7 +38,7 @@ export class AdminisratorsListComponent implements OnInit {
     this.persistant_data.set('admin', admin,
     {type: StorageType.SESSION});
 
-    this.route.navigate(['/account/admin/details']);
+    this.route.navigate(['/account/super-admin/admin/details']);
   }
 
   onAddAdmin(added: boolean) {

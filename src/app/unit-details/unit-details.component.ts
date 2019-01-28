@@ -4,6 +4,9 @@ import { PropertyResourceService } from '../services/property-api/property-resou
 import {Router, ActivatedRoute} from '@angular/router';
 import { PersistenceService, StorageType} from 'angular-persistence';
 import { FormGroup, FormBuilder} from '@angular/forms';
+// import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { WarningPopupComponent } from '../warning-popup/warning-popup.component';
 
 @Component({
   selector: 'app-unit-details',
@@ -21,16 +24,21 @@ export class UnitDetailsComponent implements OnInit, OnDestroy {
   image_file;
   unit_details;
 
+  modalRef: BsModalRef;
+
   constructor(
     private loginservice: LoginServiceService,
     private dbservice: PropertyResourceService,
     private peristenceservice: PersistenceService,
+    private route: Router,
     private router: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
     this.unit_details = this.peristenceservice.get('unit_details', StorageType.SESSION);
+    // this.modalRef = this.modalService.show(WarningPopupComponent);
   }
 
   editUnitDetails() {
@@ -68,7 +76,7 @@ export class UnitDetailsComponent implements OnInit, OnDestroy {
 
   handleFileInput(files) {
     this.image_file = files.item(0);
-    console.log(this.image_file);
+    // console.log(this.image_file);
   }
 
   saveChanges(formValues, formName: String) {
@@ -94,6 +102,19 @@ export class UnitDetailsComponent implements OnInit, OnDestroy {
       this.edit_payment_details = false;
       this.edit_unit_details = false;
     }
+  }
+
+  deleteUnit() {
+    this.modalRef = this.modalService.show(WarningPopupComponent);
+    this.modalRef.content.action_confirmed.subscribe(confirmation => {
+      if (confirmation ) {
+        this.dbservice.deleteUnitDetails(this.unit_details['id']).subscribe(success => {
+          this.route.navigate(['/account/super-admin/property-details']);
+        });
+      } else {
+        console.log('discard delete request');
+      }
+    });
   }
 
   ngOnDestroy() {

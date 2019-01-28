@@ -32,6 +32,7 @@ export class SuperadminViewComponent implements OnInit {
 
       this.dbservice.fetchAllProperties().subscribe(results => {
         this.property_list = results;
+        this.dbservice.setproperty_list(results);
       });
     }
   }
