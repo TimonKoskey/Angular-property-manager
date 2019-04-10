@@ -1,0 +1,46 @@
+
+    <div id="form-column">
+      <p *ngIf="loginErrors" style="color:red">
+          <b>{{loginErrors}}</b>
+      </p> 
+      <div class="card card-login">
+        <div class="card-header">
+          Sign In
+        </div>
+        <form class="form" [formGroup]='authform'  
+        #ourLoginDir='ngForm' (submit)='handleSubmit($event, ourLoginDir, authform)'>
+          <div class="content">
+            <!-- form-group-no-border  *ngIf='!userData && !tokenExists' -->
+            <!-- <div class="input-group  input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons users_circle-08"></i>
+                                </span> -->
+              <label for="email-username">Email or Username</label>
+              <input type="text" class="form-control" formControlName="username" 
+              placeholder="username or email...">
+            <!-- </div> -->
+            <!-- <div class="input-group input-lg">
+                                <span class="input-group-addon">
+                                    <i class="now-ui-icons text_caps-small"></i>
+                                </span> -->
+              <label for="password">Password</label>
+              <input type="password" formControlName="password" placeholder="password..." class="form-control" />
+            <!-- </div> -->
+          </div>
+          <div class="footer text-center">
+            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Sign In</button>
+          </div>
+          <div class="pull-left">
+            <h6>
+              <a (click)="goToSignUp()" class="link">Create Account</a>
+            </h6>
+          </div>
+          <div class="pull-right">
+            <h6>
+              <a href="#pablo" class="link">Need Help?</a>
+            </h6>
+          </div>
+        </form>
+      </div>
+    </div>
+

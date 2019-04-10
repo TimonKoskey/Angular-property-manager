@@ -1,0 +1,187 @@
+<div class="container-fluid">
+  <div class=" card ">
+    <div class="card-header">
+      <h4>{{unit_details.unit_ID}}</h4>
+    </div>
+    <div class="card-content">
+      <div class="row">
+
+          <div class="col-md-8">
+            <div class=card>
+              <div class=row  *ngIf="edit_unit_details===false; else editUnitDetailsForm">
+                <div class="col-md-6" *ngFor="let picture of unit_details.pictures">
+                  <img class="card-img" [src]="'http://127.0.0.1:8000'+ picture.pictures"> 
+                </div>
+                <div class="col-md-6">
+                  <div class=card-content>
+                    <p>unit size: <span>{{unit_details.unit_size}}</span></p>
+                    <p>number of rooms: <span>{{unit_details.number_of_rooms}}</span></p>
+                    <p>purpose: <span>{{unit_details.unit_purpose}}</span></p>
+                    <p>current status: <span></span></p>
+                  </div>
+                  <button class="btn btn-info" (click)="editUnitDetails()"> edit details</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" *ngIf="confirm_form_input === 'unitDetailsForm' && edit_unit_details">
+            <app-confirm-form-input [form_data]="form_input" (data_confirmed)="unitDetailsDataConfirmation($event)"></app-confirm-form-input>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card " *ngIf="edit_tenant_details===false; else editTenantDetailsForm">
+              <div class="row card-content">
+                <div class="col-md-6">
+                  <p>client name: <span>{{unit_details.tenant_details.user.first_name}} 
+                      {{unit_details.tenant_details.user.last_name}}</span>
+                  </p>
+                  <p>occupation: <span>{{unit_details.tenant_details.occupation}}</span></p>
+                  <p>phone number: <span>{{unit_details.tenant_details.phone_number}}</span></p>
+                  <p>email: <span>{{unit_details.tenant_details.user.email}}</span></p>
+                  <p>relationship_status: <span></span></p>
+                  <button class="btn btn-info" (click)="editTenantDetails()"> edit tenant details</button>
+                </div>
+                <div class="col-md-6">
+                  <p>emergency_contact_name: <span></span></p> 
+                  <p>emergency_contact_relationship: <span></span></p>
+                  <p>emergency_contact_phone_number: <span></span></p>
+                  <p>date_of_entry: <span></span></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" *ngIf="confirm_form_input ==='tenantDetailsForm' && edit_tenant_details">
+            <app-confirm-form-input [form_data]="form_input" (data_confirmed)="tenantDetailsDataConfirmation($event)"></app-confirm-form-input>
+          </div>
+
+          <div class="col-md-8">
+            <div class="card" *ngIf="edit_payment_details===false; else editPaymentDetailsForm">
+              <div class="row card-content">
+                <div class="col-md-6">
+                  <p>expected_amount: <span>{{unit_details.tenant_current_month_payment_status.expected_amount}}</span></p>
+                  <p>current month: <span></span></p>
+                  <p>amount paid: <span>{{unit_details.tenant_current_month_payment_status.amount_paid}}</span></p>
+                  <p>balance: <span>{{unit_details.tenant_current_month_payment_status.balance}}</span></p>
+                  <button class="btn btn-info" (click)="editTenantPaymentDetails()"> edit tenant details</button>
+                </div>
+                <div class="col-md-6">
+                  <p>date_of_payment: <span>{{unit_details.tenant_current_month_payment_status.date_of_payment}}</span></p>
+                  <p>payment_method: <span>{{unit_details.tenant_current_month_payment_status.mode_of_payment}}</span></p>
+                  <p>payment status: <span></span></p>
+                </div>
+
+              </div>
+            </div> 
+            <div class="col-md-12" style="text-align:center;">
+              <button class="btn btn-danger" (click)="deleteTenant()">remove this tenant</button>
+            </div>
+          </div>
+
+          <div class="col-md-4" *ngIf="confirm_form_input === 'paymentDetailsForm' && edit_payment_details">
+            <app-confirm-form-input [form_data]="form_input" (data_confirmed)="paymentDetailsDataConfirmation($event)"></app-confirm-form-input>
+          </div>
+          <div class="col-md-12">
+            <button class="btn btn-danger float-right" (click)="deleteUnit()">REMOVE UNIT</button>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #editUnitDetailsForm>
+  <div class="card-header">
+    <h4>edit unit details</h4>
+  </div>
+  <div class="card-content">
+    <form [formGroup]="edit_unit_form">
+      <div class="row">
+        <div class="col-md-6">
+          <label for="unit_ID">unit id</label>
+          <input type="text" class="form-control" formControlName="unit_ID">
+          <label for="unit_size">unit size</label>
+          <input type="text" class="form-control" formControlName="unit_size">
+        </div>
+        <div class="col-md-6">
+          <label for="number_of_rooms">number of rooms</label>
+          <input type="text" class="form-control" formControlName="number_of_rooms">
+          <label for="unit_purpose">unit purpose</label>
+          <input type="text" class="form-control" formControlName="unit_purpose">
+        </div>
+
+        <div class="col-md-12">
+          <label for="file">upload image</label>
+          <input type="file"  id="file" (change)="handleFileInput($event.target.files)">
+        </div>
+      </div>
+      <button class="btn btn-default " (click)="saveChanges(edit_unit_form.value, 'unitDetailsForm')">save changes</button>
+      <button class="btn btn-default float-right" (click)="quitForms('unitDetailsForm')">quit</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #editTenantDetailsForm>
+  <div class="card-header">
+    <h4>edit unit details</h4>
+  </div>
+  <div class="card-content">
+    <form [formGroup]="edit_tenant_details_form">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group" formGroupName="user_data">
+            <label for="first_name">first_name</label>
+            <input type="text" class="form-control" formControlName="first_name">
+            <label for="last_name">last_name</label>
+            <input type="text" class="form-control" formControlName="last_name">
+            <label for="username">username</label>
+            <input type="text" class="form-control" formControlName="username">
+            <label for="email">email</label>
+            <input type="text" class="form-control" formControlName="email">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group" formGroupName="tenant_class_details">
+            <label for="phone_number">phone number</label>
+            <input type="number" class="form-control" formControlName="phone_number">
+            <label for="occupation">occupation</label>
+            <input type="text" class="form-control" formControlName="occupation">
+            <label for="relationship_status">relationship status</label>
+            <input type="text" class="form-control" formControlName="relationship_status">
+            <label for="emergency_contact_name">emergency contact name</label>
+            <input type="text" class="form-control" formControlName="emergency_contact_name">
+            <label for="emergency_contact_relationship">emergency contact relationship</label>
+            <input type="text" class="form-control" formControlName="emergency_contact_relationship">
+            <label for="emergency_contact_phone_number">emergency contact phone number</label>
+            <input type="text" class="form-control" formControlName="emergency_contact_phone_number">
+          </div>
+        </div>
+
+        <!-- <div class="col-md-12">
+          <label for="file">upload image</label>
+          <input type="file"  id="file" (change)="handleFileInput($event.target.files)">
+        </div> -->
+      </div>
+      <button class="btn btn-default " (click)="saveChanges(edit_tenant_details_form.value, 'tenantDetailsForm')">save changes</button>
+      <button class="btn btn-default float-right" (click)="quitForms('tenantDetailsForm')">quit</button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #editPaymentDetailsForm>
+  <div class="card-header">
+    <p><u>edit unit details</u></p>
+  </div>
+  <div class="card-content">
+    <form [formGroup]="edit_tenant_payment_form">
+      <label for="amount_paid">amount paid</label>
+      <input type="number" class="form-control" formControlName="amount_paid">
+      <label for="payment_method">payment method</label>
+      <input type="text" class="form-control" formControlName="payment_method">
+      <button class="btn btn-default " (click)="saveChanges(edit_tenant_payment_form.value, 'paymentDetailsForm')">save changes</button>
+      <button class="btn btn-default  float-right" (click)="quitForms('paymentDetailsForm')">quit</button>
+    </form>
+  </div>
+</ng-template>

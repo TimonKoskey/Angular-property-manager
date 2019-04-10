@@ -1,0 +1,14 @@
+<div id="center-div">
+  <div class="card">
+    <form class="form" [formGroup]="tenantValidationForm">
+      <label>username</label>
+      <input type="text" class="form-control" formControlName="username">
+      <label>password</label>
+      <input type="password" class="form-control" formControlName="password">
+    </form>
+    <button class="btn btn-success" (click)="handleSubmit(tenantValidationForm.value)" href="javascript:void(0)">submit</button>
+  </div>
+</div>
+
+<!-- (submit)="handleSubmit(tenantValidationForm.value)" -->
+

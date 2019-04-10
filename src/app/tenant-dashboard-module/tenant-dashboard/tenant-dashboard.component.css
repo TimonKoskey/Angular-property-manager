@@ -1,0 +1,41 @@
+.main-content{
+    background-color: white;
+    margin-top: 80px;
+}
+
+p {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.card {
+    background-color: white;
+    padding: 30px 30px 30px;
+}
+
+.action-center {
+    /* padding-top: 20px; */
+    padding-bottom: 30px;
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.table-heading {
+    /* color: rgb(250, 255, 189); */
+    font-weight: bold;
+}
+
+.table-label {
+    font-style: italic;
+}
+
+.table-data {
+    color: rgb(165,42,42);
+}
