@@ -1,6 +1,5 @@
 .main-content{
-    /* background-color: white; */
-    background-color: #ddd;
+    background-color: white;
     margin-top: 80px;
 }
 
@@ -26,7 +25,6 @@ p {
     margin-top: 10px;
     margin-bottom: 10px;
     text-align: left;
-    border-color: #777;
 }
 
 .table-heading {
@@ -41,24 +39,3 @@ p {
 .table-data {
     color: rgb(165,42,42);
 }
-
-.navbar-form {
-    margin-right: 50px
-}
-
-.container-fluid .navbar-wrapper .navbar-brand {
-font-size: 17px;
-}
-
-.fixed-top {
-position: relative;
-}
-
-.container {
-    background-color: #ddd;
-}
-
-
-
-
-

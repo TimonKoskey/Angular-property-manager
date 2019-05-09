@@ -23,7 +23,7 @@ import { SuperadminViewComponent } from './property-list/superadmin-view/superad
 const routes: Routes = [
     { path: '', component: LandingPageComponent },
 
-    { path: 'account/:permission-level', component: ContentHolderComponent,
+    { path: 'admin', component: ContentHolderComponent,
       canActivate: [ManagementLoginRouteGuard],
       children:  [
       { path: '', component: SuperAdminDashboardComponent,

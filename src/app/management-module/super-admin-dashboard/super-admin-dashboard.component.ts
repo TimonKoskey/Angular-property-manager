@@ -20,6 +20,7 @@ export class SuperAdminDashboardComponent implements OnInit {
   private appDataSub: any;
   userPermissionLevel: String;
   userBaseUrl;
+  private notifications;
 
   constructor(
     private dbservice: PropertyResourceService,
@@ -43,6 +44,16 @@ export class SuperAdminDashboardComponent implements OnInit {
     this.user_details = this.persistance.get('user_data', StorageType.SESSION);
 
     this.userPermissionLevel = this.loginservice.getPermissionLevel();
+    this.Notifications(this.user_details['id']);
+
+  }
+
+  Notifications(user_id)  {
+    this.loginservice.getNotifications(user_id).subscribe(results => {
+      // console.log(results);
+      this.notifications = results;
+      console.log(this.notifications.length);
+    });
   }
 
   Logout() {

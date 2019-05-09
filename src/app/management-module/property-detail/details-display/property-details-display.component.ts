@@ -15,6 +15,7 @@ export class PropertyDetailDisplayComponent implements OnInit, OnDestroy {
   units_list;
   rent_status = 'payed';
   status = true;
+  base_url;
 
   constructor(
     private loginservice: LoginServiceService,
@@ -24,6 +25,7 @@ export class PropertyDetailDisplayComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.base_url = this.loginservice.userAccountBaseUrl();
     this.property_id = this.peristenceservice.get('property_id', StorageType.SESSION);
 
     this.dbservice.fetchPropertyDetails(this.property_id).subscribe(results => {
@@ -40,18 +42,18 @@ export class PropertyDetailDisplayComponent implements OnInit, OnDestroy {
   }
 
   editProperty() {
-    this.route.navigate(['/account/super-admin/property-details/edit']);
+    this.route.navigate([`/${this.base_url}/property-details/edit`]);
   }
 
   deleteProperty() {
     this.dbservice.DeleteProperty(this.property_id).subscribe(results => {
-      this.route.navigate(['/account/super-admin/dashboard']);
+      this.route.navigate([`/${this.base_url}/dashboard`]);
     });
   }
 
   viewUnitDetails(unit) {
     this.peristenceservice.set('unit_details', unit, {type: StorageType.SESSION});
-    this.route.navigate(['/account/super-admin/property-details/unit/details']);
+    this.route.navigate([`/${this.base_url}/property-details/unit/details`]);
   }
 
   ngOnDestroy() {

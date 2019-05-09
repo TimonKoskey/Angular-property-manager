@@ -1,6 +1,123 @@
 .modal{
     display: inline;
-    /* left: 35%;
-    right: 35%; */
 }
+
+.footer {
+    /* margin-left: 200px; */
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: black;
+    /* background-color: #777; */
+    /* text-align: center; */
+    z-index: 1030;
+ 
+    padding: .9375rem 0;
+    text-align: center;
+    display: flex;
+}
+
+.navbar-toggler-icon {
+    width: 22px;
+    height: 2px;
+    /* vertical-align: middle; */
+    outline: 0;
+    display: block;
+    border-radius: 1px;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon+.navbar-toggler-icon {
+    margin-top: 4px;
+}
+
+.navbar .navbar-toggler .icon-bar {
+    background: #001c53f8!important;
+}
+
+.navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+}
+
+@media (max-width: 991px){
+.navbar-collapse {
+    /* position: fixed; */
+    top: 0;
+    height: 100%;
+    width: 230px;
+    right: 0;
+    margin-right: 0!important;
+    z-index: 1032;
+    visibility: visible;
+    background-color: #999;
+    overflow-y: visible;
+    border-top: none;
+    text-align: left;
+    padding-right: 0;
+    padding-left: 0;
+    max-height: none!important;
+    transform: translate3d(230px,0,0);
+    transition: all .5s cubic-bezier(.685,.0473,.346,1);
+}
+}
+
+.card {
+    font-size: .875rem;
+}
+
+.card.card-chart .card-body .card-category {
+    margin: 0;
+}
+
+.btn.btn-default {
+    background-color: rgba(0, 123, 255, 0.35);
+    color: #155724;
+}
+
+.footer ul li {
+    display: inline-block;
+}
+
+.footer ul {
+    margin-bottom: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer ul li a {
+    color: inherit;
+    padding: .9375rem;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    position: relative;
+    display: block;
+}
+
+.card.property-info {
+    border: 0;
+    /* margin: 0px;
+    width: 100%; */
+    margin-top: 20px;
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    color: inherit;
+    height: 50px;
+    font-size: 1.125rem;
+    line-height: 30px;
+    padding: .625rem 0;
+    font-weight: 300;
+    margin-left: 1rem;
+}
+
+.navbar .navbar-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
 

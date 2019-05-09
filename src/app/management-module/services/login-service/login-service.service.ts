@@ -162,8 +162,6 @@ export class LoginServiceService {
   setUsernameAndPermissionLevel(username, permissionLevel) {
     this.persistenceService.set('username', username, {type: StorageType.SESSION});
     this.persistenceService.set('permissionLevel', permissionLevel, {type: StorageType.SESSION});
-    const url = `/management/account/${permissionLevel}`;
-    this.persistenceService.set('userAccountBaseUrl', url, {type: StorageType.SESSION});
   }
 
   getUsername() {
@@ -175,7 +173,8 @@ export class LoginServiceService {
   }
 
   userAccountBaseUrl() {
-    return this.persistenceService.get('userAccountBaseUrl', StorageType.SESSION);
+    const url = `/management/admin`;
+    return url;
   }
 
 
@@ -184,8 +183,15 @@ export class LoginServiceService {
     const username = this.persistenceService.get('user_data', StorageType.SESSION)['user']['username'];
     this.setUsernameAndPermissionLevel(username, permissionLevel);
 
-    this.router.navigate(['/management/account', permissionLevel]);
+    this.router.navigate(['/management/admin']);
 
+  }
+
+  getNotifications(user_id) {
+    const url = `http://127.0.0.1:8000/messages/serializers/inbox/new/${user_id}/`;
+    const token = this.getToken();
+    const httpOptions = this.createHeaders(token);
+    return this.http.get(url, httpOptions);
   }
 
 }

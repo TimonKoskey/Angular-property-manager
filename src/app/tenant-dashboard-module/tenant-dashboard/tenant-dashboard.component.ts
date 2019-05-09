@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TenantServerApiService } from '../tenant-api/tenant-server-api.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-tenant-dashboard',
@@ -7,23 +8,22 @@ import { TenantServerApiService } from '../tenant-api/tenant-server-api.service'
   styleUrls: ['./tenant-dashboard.component.css']
 })
 export class TenantDashboardComponent implements OnInit {
-  private tenant_details;
-  private tenant_data;
 
   constructor(
     private serverApiService: TenantServerApiService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    this.tenant_details = this.serverApiService.getTenantDetails();
-    this.serverApiService.fetchTenantData(this.tenant_details['id']).subscribe(results => {
-      console.log(results, this.tenant_details);
-      this.tenant_data = results;
-    });
+
   }
 
   Logout() {
     this.serverApiService.logout();
+  }
+
+  navToRepairs() {
+    this.router.navigate(['/account/request-repairs']);
   }
 
 }

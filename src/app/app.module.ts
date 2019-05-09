@@ -4,11 +4,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
-// import { TenantDashboardModule } from './tenant-dashboard-module/tenant-dashboard.module';
-// import { ManagementModule } from './management-module/management.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { MyAppComponent } from './mydashboard.component';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [ MyAppComponent ],
@@ -17,10 +16,8 @@ import { MyAppComponent } from './mydashboard.component';
     BrowserModule,
     CommonModule,
     HttpModule,
-    // TenantDashboardModule,
-    // ManagementModule,
-    // RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TypeaheadModule.forRoot()
   ],
 
   providers: [],

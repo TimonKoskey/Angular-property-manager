@@ -1,86 +1,55 @@
-/* #profile-image {
-    object-fit: cover;
-    width:150px;
-    height:150px;
+.navbar-form {
+    margin-right: 50px
+}
+
+.main-panel{
+    margin-left: 200px;
+}
+
+/* .content .container-fluid {
+    margin-top: 70px
+} */
+
+.main-panel .container-fluid .navbar-wrapper .navbar-brand {
+    font-size: 17px;
   }
 
- #sidebar-nav .nav-container .nav li {
-    width: 100%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-  }
-
-  #sidebar-nav .nav-container .nav li a {
-    display: block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left:5px;
-    text-decoration: none;
-  }
-
-  #sidebar .nav-container .active {
-    background-color: #868e96;
-  }
-
-  li a:hover:not(.active) {
+  .sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    /* z-index: 1; */
+    top: 0;
+    left: 0;
     background-color: #ddd;
-  }
-  
-
-
-p a{
-  color: #f2f2f2;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 
-
-
-#logout-link {
-  cursor: pointer;
+.sidebar .sidebar-wrapper ul.nav li.nav-item {
+    width: 100%;
 }
 
-.navbar {
-  background-color: #17a2b8;
-  margin-bottom: 0px;
-  border: 0px;
-  color: #f2f2f2;
-}
-
-.navbar-inverse .navbar-brand {
-  color: #f2dede;
-}
-
-.navbar-inverse .navbar-nav>li>a {
-  color: #fff7f1;
+/* .sidebar .sidebar-wrapper ul.nav .active {
+    background-color: #111; .nav>li>a:focus, 
 } */
 
-/* Style the links inside the navigation bar */
-/* .topnav h3 {
-  float: left;
-  color: #f2f2f2;
-  padding: 14px 16px;
-  text-decoration: none;
-  margin-bottom: 0px;
-  cursor: pointer;
-} */
-
-/* #main-panel {
-  margin-top: 0px;
-}
-
-@media only screen and (min-width: 720px){
-    #sidebar {
-      padding-right: 0px;
-      height: 90vh;
-      max-height: 1050px;
-      position: relative;
-    }
-  }
-  
-
-#sidebar {
+.nav>li>a.active {
     background-color: #eee;
-    margin-top: 0px
-  } */
+}
 
-  /* #eee; */
+.nav>li>a:not(.active):hover {
+    background-color: #777;
+}
+
+.sidebar .sidebar-wrapper {
+    margin-top: 20px;
+}
+
+.fixed-top {
+    position: relative;
+}
+
+.content{
+    padding-bottom: 60px;
+}

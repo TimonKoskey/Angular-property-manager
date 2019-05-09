@@ -28,14 +28,15 @@ export class SuperadminViewComponent implements OnInit {
 
   fetchProperties () {
 
-    if ( this.user_details['role']['role_name'] === 'Super-Administrator' && this.loginservice.checkToken()) {
+    if ( this.user_details['role_name'] === 'super-administrator' && this.loginservice.checkToken()) {
 
       this.dbservice.fetchAllProperties().subscribe(results => {
         this.property_list = results;
+        console.log(results);
         this.dbservice.setproperty_list(results);
       });
     }
-    if ( this.user_details['role']['role_name'] === 'Administrator' && this.loginservice.checkToken()) {
+    if ( this.user_details['role_name'] === 'administrator' && this.loginservice.checkToken()) {
       console.log(this.user_details['role']['role_name']);
       this.dbservice.fetchAdminProperties(this.user_details['id']).subscribe(results => {
         this.property_list = results;
@@ -45,9 +46,10 @@ export class SuperadminViewComponent implements OnInit {
   }
 
   navigateToDetails(properyID) {
+    const url = this.loginservice.userAccountBaseUrl();
     this.persistenceservice.set('property_id', properyID,
     {type: StorageType.SESSION});
-    this.router.navigate(['/account/property-details']);
+    this.router.navigate([`/${url}/property-details`]);
   }
 
   // ngOnDestroy () {
